@@ -1,39 +1,45 @@
 # PNTSkullstripInferenceProject
 
-## Introduction 
+DeepBrain is SwansonLab's inhouse deep learning model for extracting brain tissue. this model was built using the Tensorflow based platform niftynet, which requires a specific format of data to run. 
 
-DeepBrain is SwansonLab's inhouse deep learning model for extracting brain tissue. this model was built using the Tensorflow based platform niftynet, which requires a specific format of data to run. For information about how this model was built, please read:
+## reference
+For information about how this model was built, please read:
 
 Ranjbar S, Singleton KW, Curtin L, Rickertsen CR, Paulson LE, Hu LS, Mitchell JR, Swanson KR. Weakly Supervised Skull Stripping of Magnetic Resonance Imaging of Brain Tumor Patients. From Prototype to Clinical Workflow: Moving Machine Learning for Lesion Quantification into Neuroradiological Practice. 2022 Aug 2.
 
-This script is a wrapper for runninng inference on a new test sample (or samples, it works in batch). Given an input folder with images along with image identifier (string saying either T1Gd or FLAIR), and path to an output folder, this script does the following:
+## Where to find previously trained model objects
 
-1 - fixes all image-related requirements of the trained net, including resampling
-    and renaming
+Trainend models are provided in PNTMRSkullstrippingProject repository (due to the size of model objects they were not duplicated here). Please download the models from PNTMRSkullstrippingProject repository to your local machine for running the inference.
 
-2 - generates a csv file, in which image ids and assigned cohort (in this case
-    inference) are indicated
+## run_deepbrain.py 
 
-3 - generates a configation file for calling niftynet that include paths to input,
-   output, model, model, etc.
+run_deepbrain.py is a wrapper that takes care of all preprocessing that needs to happen before you can run the model on a new test case. This script does a lot of things: 
 
-4 - calls the niftynet using the configuration file in inference mode
+1 - finds all input images and resamples and renames data to match what niftynet expects
 
-5 - renames and resizes predictions to the original image space
+2 - generates a csv file, in which new image ids are assigned to inference cohort (needed for running niftynet)
 
-6 - deletes all intermediate files
+3 - generates a reference csv file for keeping track of name change and spacing change.
 
-## Where to find the model objects
+4 - writes a configation file for calling niftynet that include paths to input,
+   output, model, etc.
 
-trainend models are provided in PNTMRSkullstrippingProject repository (due to the size of model objects they were not duplicated here). Please download the models from PNTMRSkullstrippingProject repository to your local machine for running the inference
+5 - calls the niftynet platform using said config file in inference mode, this will generate predicted brain masks.
 
-##  Requirements
-1) a folder with FLAIR images in nifti format, with an image identifier tag (e.g. FLAIR) in image names.
-2) previously trained models (available in PNTSkullStrippingProject repository).
-3) 
+6 - renames and resizes predicted mask back to the original image space and image names
 
-##  How to run  
-1 - open a terminal window and cd where this file is located
+7 - deletes all intermediate files
+
+
+##  Data  preparation
+
+You need to prepare a folder with your test case FLAIR images in nifti format. Niftynet works in batches, so it can be a folder with all of your test cases or just one case.
+
+Note: Images NEED to have an image type identifier tag (in this case FLAIR) in their names otherwise they won't be recognized.
+
+## how to use
+
+Once you have your data and models ready, clone this repository, open a terminal window and cd where run_deepbrain.py is located.
 
 2 - create an conda environment using the niftynet yml file (if you havenot already) by typing 'conda env create -f niftynet.yml'
 
