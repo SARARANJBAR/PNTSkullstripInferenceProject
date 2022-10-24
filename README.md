@@ -1,15 +1,15 @@
 # PNTSkullstripInferenceProject
 
-DeepBrain is SwansonLab's inhouse deep learning model for extracting brain tissue. this model was built using the Tensorflow based platform niftynet, which requires a specific format of data to run. 
+PNTDeepBrain is SwansonLab's inhouse deep learning model for extracting brain tissue. this model was built using the Tensorflow based platform niftynet, which requires a specific format of data to run. 
 
 ## reference
-For information about how this model was built, please read:
+For information about how the model was trained, please read:
 
 Ranjbar S, Singleton KW, Curtin L, Rickertsen CR, Paulson LE, Hu LS, Mitchell JR, Swanson KR. Weakly Supervised Skull Stripping of Magnetic Resonance Imaging of Brain Tumor Patients. From Prototype to Clinical Workflow: Moving Machine Learning for Lesion Quantification into Neuroradiological Practice. 2022 Aug 2.
 
 ## Where to find previously trained model objects
 
-Trainend models are provided in PNTMRSkullstrippingProject repository (due to the size of model objects they were not duplicated here). Please download the models from PNTMRSkullstrippingProject repository to your local machine for running the inference.
+Trainend models are provided in PNTDeepBrainModels repository (due to the size of model objects they were not duplicated here). Please download the FLAIR models from this repository to your local machine for running inference.
 
 ## run_deepbrain.py 
 
