@@ -1,7 +1,9 @@
 # PNTSkullstripInferenceProject
 
 ## Introduction 
+
 DeepBrain is SwansonLab's inhouse deep learning model for extracting brain tissue. this model was built using the Tensorflow based platform niftynet, which requires a specific format of data to run. For information about how this model was built, please read:
+
 Ranjbar S, Singleton KW, Curtin L, Rickertsen CR, Paulson LE, Hu LS, Mitchell JR, Swanson KR. Weakly Supervised Skull Stripping of Magnetic Resonance Imaging of Brain Tumor Patients. From Prototype to Clinical Workflow: Moving Machine Learning for Lesion Quantification into Neuroradiological Practice. 2022 Aug 2.
 
 This script is a wrapper for runninng inference on a new test sample (or samples, it works in batch). Given an input folder with images along with image identifier (string saying either T1Gd or FLAIR), and path to an output folder, this script does the following:
