@@ -21,8 +21,9 @@ Given an input folder with images along with image identifier (string saying eit
 6 - deletes all intermediate files
 
 ##  Requirements
-requires a folder with T2-FLAIR images in nifti format, with an image identifier tag (e.g. FLAIR) in image names.
-
+1) a folder with T2-FLAIR images in nifti format, with an image identifier tag (e.g. FLAIR) in image names.
+2) previously trained models (available in PNTSkullStrippingProject repository).
+3) 
 ##  How to run  
 1 - open a terminal window and cd where this file is located
 
